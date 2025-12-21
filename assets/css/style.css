@@ -1,8 +1,13 @@
+html {
+  scroll-behavior: smooth;
+}
+
+
 :root {
-  --primary: #2563eb;
-  --dark: #0f172a;
-  --gray: #64748b;
-  --light: #f8fafc;
+  --primary: #00ADB5;
+  --dark: #222831;
+  --gray: #393E46;
+  --light: #EEEEEE;
 }
 
 * {
@@ -14,24 +19,93 @@
 body {
   font-family: 'Inter', sans-serif;
   color: var(--dark);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
+/* UTIL */
 .container {
   max-width: 1100px;
   margin: auto;
   padding: 0 20px;
 }
 
-/* HERO */
-.hero {
-  padding: 80px 0;
+/* =====================
+   NAVBAR
+===================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 999;
+  border-bottom: 1px solid #e5e7eb;
+  animation: fadeIn 0.8s ease forwards;
 }
 
-.hero-content {
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.nav-logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.nav-menu a {
+   position: relative;
+  text-decoration: none;
+  color: var(--gray);
+  font-weight: 600;
+  transition: 
+    color 0.3s ease,
+    transform 0.2s ease;
+}
+
+/* Hover underline animation */
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+.nav-menu a:active {
+  transform: scale(0.95);
+}
+
+
+/* HERO */
+.hero {
+  padding: 90px 0;
+}
+
+.hero-wrapper {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 50px;
 }
 
 .profile-img {
@@ -39,18 +113,23 @@ body {
   border-radius: 16px;
 }
 
-.title {
-  color: var(--primary);
-  margin: 8px 0;
+.hero-text h1 {
+  font-size: 40px;
 }
 
-.description {
+.role {
+  color: var(--primary);
+  margin: 8px 0 15px;
+}
+
+.hero-desc {
   color: var(--gray);
   max-width: 600px;
 }
 
 .social-links a {
-  margin-right: 15px;
+  position: relative;
+  margin-right: 16px;
   text-decoration: none;
   color: var(--primary);
   font-weight: 600;
@@ -59,6 +138,8 @@ body {
 /* SECTION */
 .section {
   padding: 70px 0;
+  scroll-margin-top: 90px;
+  animation: fadeUp 0.8s ease both;
 }
 
 .section.gray {
@@ -66,7 +147,7 @@ body {
 }
 
 h2 {
-  font-size: 28px;
+  font-size: 30px;
   margin-bottom: 20px;
 }
 
@@ -78,9 +159,10 @@ h2 {
 }
 
 /* CARD */
-.card, .testimonial {
+.card,
+.testimonial {
   background: white;
-  padding: 20px;
+  padding: 22px;
   border-radius: 14px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
@@ -93,7 +175,6 @@ h2 {
 
 /* WHY */
 .why-list {
-  list-style: disc;
   padding-left: 20px;
 }
 
@@ -105,13 +186,13 @@ h2 {
 footer {
   text-align: center;
   padding: 20px;
-  color: var(--gray);
   font-size: 14px;
+  color: var(--gray);
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .hero-content {
+  .hero-wrapper {
     flex-direction: column;
     text-align: center;
   }
@@ -119,4 +200,102 @@ footer {
   .profile-img {
     width: 180px;
   }
+
+  .nav-menu {
+    gap: 16px;
+    font-size: 14px;
+  }
+}
+
+
+/* =====================
+   ANIMATIONS
+===================== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.hero {
+  animation: fadeIn 1s ease forwards;
+}
+
+.hero-text h1 {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.hero-text .role {
+  animation: fadeUp 1s ease forwards;
+}
+
+.hero-desc {
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.social-links {
+  animation: fadeUp 1.4s ease forwards;
+}
+
+.profile-img {
+  animation: float 4s ease-in-out infinite;
+}
+
+.card,
+.testimonial {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover,
+.testimonial:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.08);
+}
+
+.social-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.social-links a:hover::after {
+  width: 100%;
+}
+
+.section {
+  animation: fadeUp 1s ease forwards;
+}
+
+.card img {
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.nav-menu a:focus {
+  color: var(--primary);
 }
