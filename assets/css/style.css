@@ -55,6 +55,11 @@ body {
   color: var(--dark);
 }
 
+.nav-logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .nav-menu {
   list-style: none;
   display: flex;
