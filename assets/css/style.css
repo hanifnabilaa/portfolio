@@ -319,6 +319,32 @@ h2 {
   padding-left: 14px;
 }
 
+
+/* CONTACT */
+.contact-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contact-list a {
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: 1px solid #eee;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--dark);
+  transition: all 0.3s ease;
+}
+
+.contact-list a:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-3px);
+}
+
+
 /* TESTIMONIAL */
 .testi-footer {
   display: flex;
@@ -331,11 +357,11 @@ h2 {
 
 /* Mengatur ukuran logo */
 .picture-testi {
-  width: 100px;       /* Ukuran lebar tetap */
-  height: 100px;      /* Ukuran tinggi tetap */
-  object-fit: contain; /* Agar logo tidak gepeng/terpotong */
-  border-radius: 50%; /* Opsional: Membuat logo jadi bulat */
-  background: #f9f9f9; /* Opsional: Background tipis jika logo transparan */
+  width: 100px;       
+  height: 100px;      
+  object-fit: contain; 
+  border-radius: 50%; 
+  background: #f9f9f9;
   padding: 5px;
 }
 
@@ -357,7 +383,8 @@ footer {
   text-align: center;
   padding: 20px;
   font-size: 14px;
-  color: var(--gray);
+  color: var(--light);
+  background-color: var(--dark);
 }
 
 /* RESPONSIVE */
@@ -505,4 +532,4 @@ footer {
   background: var(--primary);
   transform: translateY(-50%);
   border-radius: 2px;
-}
+}/* Opsional: Background tipis jika logo transparan */
