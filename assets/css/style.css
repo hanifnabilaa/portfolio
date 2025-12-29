@@ -100,6 +100,7 @@ body {
 /* HERO */
 .hero {
   padding: 90px 0;
+  background-color: #222831;
 }
 
 .hero-wrapper {
@@ -115,6 +116,7 @@ body {
 
 .hero-text h1 {
   font-size: 40px;
+  color: var(--light);
 }
 
 .role {
@@ -123,7 +125,7 @@ body {
 }
 
 .hero-desc {
-  color: var(--gray);
+  color: var(--light);
   max-width: 600px;
 }
 
@@ -143,7 +145,12 @@ body {
 }
 
 .section.gray {
-  background: var(--light);
+  /* background: var(--light); */
+  background-color: var(--light);
+  /* Membuat titik kecil berwarna abu-abu gelap dengan transparansi rendah (0.1) */
+  background-image: radial-gradient(rgba(57, 62, 70, 0.1) 1px, transparent 1px);
+  /* Mengatur jarak antar titik (20px x 20px) */
+  background-size: 20px 20px;
 }
 
 h2 {
@@ -154,8 +161,45 @@ h2 {
 /* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: 300px;
   gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.grid {
+  overflow: auto;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+/* Chrome, Edge, Safari */
+.grid::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.grid::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+
+/* MUNCUL SAAT HOVER */
+.grid:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+/* Firefox hover */
+.grid:hover {
+  scrollbar-color: rgba(0, 0, 0, 0.35) transparent;
 }
 
 /* ABOUT */
@@ -211,6 +255,40 @@ h2 {
   margin-bottom: 10px;
 }
 
+/* TESTIMONIAL */
+/* Layout untuk bagian bawah testimonial */
+.testi-footer {
+  display: flex;
+  align-items: center; /* Posisi vertikal tengah */
+  gap: 15px; /* Jarak antara logo dan teks */
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee; /* Garis pemisah tipis yang rapi */
+}
+
+/* Mengatur ukuran logo */
+.picture-testi {
+  width: 100px;       /* Ukuran lebar tetap */
+  height: 100px;      /* Ukuran tinggi tetap */
+  object-fit: contain; /* Agar logo tidak gepeng/terpotong */
+  border-radius: 50%; /* Opsional: Membuat logo jadi bulat */
+  background: #f9f9f9; /* Opsional: Background tipis jika logo transparan */
+  padding: 5px;
+}
+
+/* Mengatur teks jabatan dan perusahaan */
+.testi-info h4 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--dark);
+}
+
+.company-name {
+  font-size: 14px;
+  color: var(--gray);
+  display: block; /* Agar turun ke baris baru */
+}
+
 /* FOOTER */
 footer {
   text-align: center;
@@ -221,6 +299,16 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+
+  /* GRID */
+
+  .grid {
+    grid-auto-columns: 85vw;
+    gap: 12px;
+  }
+
+  /* HERO */
+
   .hero-wrapper {
     flex-direction: column;
     text-align: center;
